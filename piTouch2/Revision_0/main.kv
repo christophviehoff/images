@@ -1,0 +1,202 @@
+# File name: layouts.kv
+#:kivy 1.8.0
+
+<MyButton@ToggleButton>:
+    color: .8,.9,0,1
+    font_size: 32
+    #trick to access canvas properties form the outside
+    rgb: (1,0,0,1)
+    on_state:
+        if self.state == "normal":self.rgb=(1,0,0,1)
+        else: self.rgb=(0,1,0,1)
+    canvas:
+        Color:
+            rgb: self.rgb
+        Rectangle:
+            pos: self.center_x+self.width/4,self.center_y+self.height/3
+            size:self.width/5, self.height/10
+
+<MyLED@Label>:
+    #trick to access canvas properties form the outside
+    rgb: (1,0,0,1)
+    canvas:
+        Color:
+            rgb: self.rgb
+        Ellipse:
+            pos: self.pos
+            size:15,15
+
+<MyGridLayout>:
+    message:message
+    textbox:textbox
+    title: title
+    header:header
+
+    rows: 4
+    padding: root.width * 0.01, root.height *0.01
+
+    BoxLayout:
+        orientation: 'horizontal'
+        size_hint_y: 0.15
+        valign: 'middle'
+        halign: 'center'
+        Label:
+            id: title
+            text: 'Generic I/O'
+        Label:
+            id:hostname
+            text: ''
+        Label:
+            color: 0,1,0,1
+            id: header
+            text_size: self.size
+            height: self.texture_size[1]
+        Switch:
+            id:switch
+            on_active: root.connection_state()
+            active: False
+
+    GridLayout:
+        rows:4
+        cols:4
+        MyButton:
+            id: bit1
+            text: 'Bit1'
+            on_press: root.cb_msg_bit1()
+
+        MyButton:
+            id: bit2
+            text: 'fwd'
+            on_press: root.cb_msg_bit2()
+            group: 1
+        MyButton:
+            id: bit3
+            text: 'rev'
+            on_press: root.cb_msg_bit3()
+            group: 1
+        MyButton:
+            id: bit4
+            text: 'stop'
+            on_press: root.cb_msg_bit4()
+            group: 1
+        MyButton:
+            id: bit5
+            text: 'reset'
+            on_press: root.cb_msg_bit5()
+            group: 1
+        MyButton:
+            id: bit6
+            text: 'index'
+            on_press: root.cb_msg_bit6()
+
+        MyButton:
+            id: bit7
+            text: 'Cycle Time'
+            on_press: root.cb_msg_bit7()
+        MyButton:
+            id: bit8
+            text: 'Counter'
+            on_press: root.cb_msg_bit8()
+        MyButton:
+            text: 'Bit9'
+            on_press: root.cb_msg_bit9()
+        MyButton:
+            text: 'Bit10'
+            on_press: root.cb_msg_bit10()
+        MyButton:
+            text: 'Bit11'
+            on_press: root.cb_msg_bit11()
+        MyButton:
+            text: 'Bit12'
+            on_press: root.cb_msg_bit12()
+        MyButton:
+            text: 'Bit13'
+            on_press: root.cb_msg_bit13()
+        MyButton:
+            text: 'Bit14'
+            on_press: root.cb_msg_bit14()
+        MyButton:
+            text: 'Bit15'
+            on_press: root.cb_msg_bit15()
+        MyButton:
+            text: 'Bit16'
+            on_press: root.cb_msg_bit16()
+
+    BoxLayout:
+        orientation: 'horizontal'
+        size_hint_y: 0.1
+
+        canvas:
+            Color:
+                rgb:  .8,.9,0,1
+            Rectangle:
+                pos: self.x,self.y
+                size: self.width, self.height
+        TextInput:
+            id: textbox
+            multiline: False
+            focus: True
+            text: ''
+            on_text_validate: root.send_message()
+
+        Label:
+            valign: 'top'
+            halign: 'justify'
+            color: 0,0,0,1
+            id: message
+            text_size: self.size
+            height: self.texture_size[1]
+            text: 'status messages'
+
+    GridLayout:
+        cols:8
+        rows:2
+        size_hint_y: 0.2
+        MyLED:
+            id: led1
+            text: "alive"
+        MyLED:
+            id: led2
+            text: "bit 2"
+        MyLED:
+            id: led3
+            text: "bit 3"
+        MyLED:
+            id: led4
+            text: "bit 4"
+        MyLED:
+            id: led5
+            text: "bit 5"
+        MyLED:
+            id: led6
+            text: "bit 6"
+        MyLED:
+            id: led7
+            text: "bit 7"
+        MyLED:
+            id: led8
+            text: "bit 8"
+        MyLED:
+            id: led9
+            text: "bit 9"
+        MyLED:
+            id: led10
+            text: "bit 10"
+        MyLED:
+            id: led11
+            text: "bit 11"
+        MyLED:
+            id: led12
+            text: "bit 12"
+        MyLED:
+            id: led13
+            text: "bit 13"
+        MyLED:
+            id: led14
+            text: "bit 14"
+        MyLED:
+            id: led15
+            text: "bit 15"
+        MyLED:
+            id: led16
+            text: "bit 16"

@@ -1,0 +1,101 @@
+# File name: layouts.kv
+#:kivy 1.9.1
+
+
+<MyButton@ToggleButton>:
+    color: .8,.9,0,1
+    font_size: 32
+<MyGridLayout>:
+    message:message
+    index:index
+    rows: 3
+    BoxLayout:
+        orientation: 'horizontal'
+        size_hint_y: 0.05
+
+        Label:
+            text: 'Keypad General I/O'
+            valign: 'middle'
+            halign: 'center'
+
+    GridLayout:
+        rows:4
+        cols:4
+        padding: root.width * 0.01, root.height *0.01
+        MyButton:
+            text: 'fwd'
+            on_press: root.cb_msg_bit1()
+            group: 1
+        MyButton:
+            text: 'rev'
+            on_press: root.cb_msg_bit2()
+            group: 1
+        MyButton:
+            text: 'stop'
+            on_press: root.cb_msg_bit3()
+            group: 1
+        MyButton:
+            text: 'reset'
+            on_press: root.cb_msg_bit4()
+            group: 1
+        MyButton:
+            id: index
+            text: 'index'
+            on_press: root.cb_msg_bit5()
+        MyButton:
+            text: 'red'
+            on_press: root.cb_msg_bit6()
+            group: 2
+        MyButton:
+            text: 'green'
+            on_press: root.cb_msg_bit7()
+            group: 2
+        MyButton:
+            text: 'blue'
+            on_press: root.cb_msg_bit8()
+            group: 2
+        MyButton:
+            text: 'white'
+            on_press: root.cb_msg_bit9()
+            group: 2
+        MyButton:
+            text: 'reset'
+            on_press: root.cb_msg_bit10()
+            group: 2
+        MyButton:
+            text: 'yellow'
+            on_press: root.cb_msg_bit11()
+        MyButton:
+            text: 'flash red'
+            on_press: root.cb_msg_bit12()
+        MyButton:
+            text: 'beTrue'
+            on_press: root.cb_msg_bit13()
+        MyButton:
+            text: 'Bit14'
+            on_press: root.cb_msg_bit14()
+        MyButton:
+            text: 'Bit15'
+            on_press: root.cb_msg_bit15()
+        MyButton:
+            text: 'Bit16'
+            on_press: root.cb_msg_bit16()
+
+    BoxLayout:
+        orientation: 'horizontal'
+        size_hint_y: 0.1
+        canvas:
+            Rectangle:
+                pos: self.x,self.y
+                size: self.width, self.height
+
+        Label:
+            valign: 'middle'
+            halign: 'center'
+            color: 0,0,0,1
+            id: message
+            text_size: self.size
+            height: self.texture_size[1]
+            text: 'status messages'
+
+
